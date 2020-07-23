@@ -5,6 +5,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'mobile.css')}}">       <!-- To import mobile specific stylesheets -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets -->
+        <script src="{{url_for('static', filename = 'state-autocomplete.js')}}"></script>
     </head>
     <body>
         <div class="header" id="header">
@@ -18,7 +19,9 @@
                     <input style="width: 80%; padding-left: 25px;" type="text"       name="name"    placeholder="Enter your full name" required><br><br>
                     <input style="width: 80%; padding-left: 25px;" type="tel"        name="number"  placeholder="Enter your phone number" required><br><br>
                     <input style="width: 80%; padding-left: 25px;" type="text"       name="address" placeholder="Enter your full Address" required><br><br>
-                    <input style="width: 80%; padding-left: 25px;" type="text"       name="state"    placeholder="Enter your State/UT." required><br><br> 
+                    <div style="position: relative;display: inline-block;width: 100%;">
+                        <input style="width: 80%; padding-left: 25px;" type="text"   name="state"   placeholder="Enter your State/UT." id="state-box" required><br><br> 
+                    </div>
                     <textarea style="width: 80%; height: 500px; padding-left: 25px;" name="food"    placeholder="Enter the food which you want to donate. (include quantity)" form="donateform" required></textarea>
                     <hr>
                     <p style="width: 80%;margin-left: auto;margin-right: auto;text-align: left;">
@@ -57,6 +60,9 @@
                 <br>
             </dl>
         </div>
+
+
+        <script>autocomplete(document.getElementById("state-box"), states)</script>
 
     </body>
 </html>
