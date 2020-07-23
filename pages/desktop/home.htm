@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <!--    Desktop - home webpage for Food4All Website
+    Author:- Nalin Angrish  -->
+    <head>
+        <title>Food 4 All</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'desktop.css')}}">      <!-- To import desktop specific stylesheets -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'slideshow.css')}}">    <!-- To import stylesheets required for intro slideshow -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets --> 
+        <script>
+            function donate(){
+                window.location.href = "/donate"
+            }function signup(){
+                window.location.href = "/signup";
+            }
+        </script>
+    </head>
+    <body>
+        <div id="header" style="position: sticky;" class="header">
+            <div class="rt-content" style="margin-bottom: 0px; width: 100%; position: absolute;" id="menubuttons">
+                <button class="red" onclick="donate()">Donate</button> 
+                <button class="blue"onclick="signup()">Sign up</button>
+                <br>
+            </div>
+            Food 4 All
+        </div>
+
+        <div id="intro" class="intro slideshow-container" >
+            <div class="mySlides">
+                <p class="fg rt-content extrapadding" style="color: white; font-size: xx-large;">If you are here to <br> help them...</p>
+                <p class="fg lb-content extrapadding" style="color: white; font-size: xx-large;">We are here to help you...</p>
+                <img src="{{url_for('static', filename = 'desktop/1.jpg')}}" class="slideshow-image">
+            </div>
+            
+            <div class="mySlides">
+                <p class="fg lt-content extrapadding" style="color: white; font-size: xx-large;">You can contribute by donating food if you have surplus <br> to donate or you are willing to donate.</p>
+                <img src="{{url_for('static', filename = 'desktop/2.jpg')}}" class="slideshow-image">
+            </div>
+            
+            <div class="mySlides">
+                <p class="fg rb-content extrapadding" style="color: white; font-size: xx-large;">You can also register <br> yourself as an NGO if you wish to <br> collect food and distribute it among the needy.</p>
+                <img src="{{url_for('static', filename = 'desktop/3.jpg')}}" class="slideshow-image">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <br>
+        </div>
+
+        <div id="aboutus" style="width: 100%;text-align: center;">
+            <h1><u> About Us </u></h1>
+            <p class="bordered" style="width: 60%; margin-left: auto;margin-right: auto;text-align: justify;padding-left: 5%;padding-right: 5%;">
+                <br>
+                <big>
+                    We are a team which wants to ensure food security for those who are in the need. 
+                    At the same time, our motto is not to allow the food to go waste when in some pockets, 
+                    food is available in surplus. To accomplish this, we plan to distribute the surplus cooked 
+                    food ready for consumption from one place to other place and for those, who need the same 
+                    and have no or low capacity to pay.  
+                </big>
+                <br>
+                <br>
+            </p>
+        </div>
+        
+        <div id="donate&signup" style="width: 100%;text-align: center;">
+            <h1><u> How can you help? </u></h1>
+            <p class="bordered donateandsignup" style="text-align: justify;">
+                <br>
+                <big>
+                    <button class="red" onclick="donate()" style="float: right;"> Donate </button><br>
+                    If you wish to help then you can become a <br> donor and donate food through our website.<br>
+                </big>
+                <br>
+            </p>
+            
+            <p class="bordered donateandsignup" style="text-align: right;">
+                <br>
+                <big>
+                    <button class="blue" onclick="signup()" style="float: left;"> Sign Up </button>
+                    What else can you do? You can even sign up <br> here as an NGO and work to collect food from <br>
+                    people who wish to donate through this website<br> and distribute it among the poor people you find.<br>
+                </big>
+                <br>
+            </p>
+        </div>
+
+        <div id="footer" style="background-color: black;color: white; position: relative;">
+            <p class="fg rt-content" style="width: fit-content;"><img src="{{url_for('static', filename = 'bigicon.png')}}" style="height: 140px;"></p>
+            <dl>
+                <dt>Contact Details:</dt>
+                <dd>
+                    <dl>
+                        <dt>Email ID:</dt>
+                        <dd>
+                            <a href="mailto:eradicatehunger.food4all@gmail.com" id="emailaddress">eradicatehunger.food4all@gmail.com</a> 
+                            <span id="emailcb" onclick="copyEmail()">
+                                <img src="{{url_for('static', filename = 'desktop/copy.png')}}" height="15px" style="filter:brightness(400%)">
+                                <span id="email" style="display: none;height: 10px;"> Copy </span>
+                            </span>
+                        </dd>
+                        <br>
+                        <dt>Phone Number:</dt>
+                        <dd>
+                            <a href="tel:+919876543210" id="phonenumber">+91 9876543210</a>
+                            <span id="phonecb" onclick="copyPhone()">
+                                <img src="{{url_for('static', filename = 'desktop/copy.png')}}" height="15px" style="filter:brightness(400%)">
+                                <span id="phone" style="display: none;height: 10px;"> Copy </span>
+                            </span>
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+            <br>
+        </div>
+
+
+
+
+
+        <script>
+            var divheight = $('div.header').height();
+            $('#menubuttons').height(divheight);
+            var margin = 0 - (divheight*0.26);
+            var mb = document.getElementById('menubuttons');
+            mb.style.marginTop = margin + 'px';
+        </script>
+        <script src="{{url_for('static', filename = 'copymanager.js')}}"></script>
+        <script src="{{url_for('static', filename = 'slideshow-auto.js')}}"></script>       <!-- For creating an automatic slideshow -->
+        <script src="{{url_for('static', filename = 'slideshow.js')}}"></script>            <!-- To import script for manual control over slideshow -->
+    </body>
+</html>

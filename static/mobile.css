@@ -1,0 +1,36 @@
+html{  /* This style 'filter' has been made for the webpage to adjust with the mobile's screen size */
+    font-size: 3pc;
+}
+.header{
+    font-size: 5pc;
+}
+button{
+    font-style: oblique;
+    height: 6pc;
+}
+img{
+   max-width: 100%;
+}
+img.bg{
+    z-index: -1;
+    min-width: 100%;
+} 
+
+.extrapadding{
+    padding-right: 50px;
+    padding-bottom: 20px;
+}
+input[type=submit]{
+    font-style: oblique;
+    height: 6pc;
+}
+
+input{
+    font-size: inherit;
+}
+textarea{
+    font-size: inherit;
+}
+input[type=radio]{
+    height: 40px;
+}

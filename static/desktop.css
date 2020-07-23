@@ -1,0 +1,28 @@
+.header{
+    font-size: 4pc;
+}
+img.bg{
+    z-index: -2;
+}
+.extrapadding{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 25px;
+}
+div.intro{
+    overflow: hidden;
+}
+.bordered{
+    border: 2px lightgray ridge;
+}
+.copybutton{
+    border: none;
+    max-height: 10px;
+}
+.donateandsignup{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+}
