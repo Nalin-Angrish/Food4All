@@ -26,3 +26,6 @@ div.intro{
     padding-left: 5%;
     padding-right: 5%;
 }
+input[type=submit], input[type=button]{ 
+    font-size: 24px;
+}

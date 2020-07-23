@@ -77,9 +77,6 @@ def donateprocessor():
 
 
 
-
-
-
 if __name__ == "__main__":                                                  # Start the web server...
     app.run(debug = True, port = 5000)                  # Flask only supports 1 request at a time but this can be increased 
                                                         # by interfacing it with a production web server like apache or nginx

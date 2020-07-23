@@ -20,7 +20,7 @@ img.bg{
     padding-right: 50px;
     padding-bottom: 20px;
 }
-input[type=submit]{
+input[type=submit], input[type=button]{
     font-style: oblique;
     height: 6pc;
 }
@@ -31,6 +31,6 @@ input{
 textarea{
     font-size: inherit;
 }
-input[type=radio]{
-    height: 40px;
+input[type=radio], input[type=checkbox]{
+    transform: scale(2);
 }

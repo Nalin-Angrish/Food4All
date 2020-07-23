@@ -3,8 +3,8 @@
     <head>
         <title>Food 4 All</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
-        <link rel="stylesheet" href="{{url_for('static', filename = 'mobile.css')}}">       <!-- To import mobile specific stylesheets -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'mobile.css')}}">       <!-- To import mobile specific stylesheets -->
     </head>
     <body>
         <div class="header" id="header">
@@ -12,7 +12,65 @@
         </div>
             
 
-        Under Development...
+        <div style="width: 100%;align-content: center; align-items: center; text-align: center;background-color: lightgray;overflow: hidden;">
+            <form action="/donate/process" method="POST" autocomplete="off" id="donateform">
+                <div style="border: 3px solid green; width: 95%; margin-left: auto;margin-right: auto; background-color: white;">
+                    <br>
+                    <input style="width: 80%; padding-left: 25px;" type="text"  name="name"    placeholder="Enter name of your Organisation" required><br><br>
+                    <input style="width: 80%; padding-left: 25px;" type="email" name="email"   placeholder="Enter your email address" required><img style="height: 40px;padding-left: 20px;" id="emailinfo" src="{{url_for('static', filename = 'mobile/info.png')}}"><br><br>
+                    <div id="info" style="display: none; font-size: 1pc;">
+                        We will use this email to notify you about new donors. So always keep this email id active.
+                    </div>
+                    <hr>
+                    <p style="width: 80%;margin-right: auto;margin-left: auto;text-align: left;">
+                        In which states / UTs do you operate?<br>
+                        <input type="checkbox" id="1"  name="states" value="Andaman & Nicobar islands"  required>   <label for="1">  Andaman & Nicobar islands    </label><br>
+                        <input type="checkbox" id="2"  name="states" value="Andhra Pradesh" required>               <label for="2">  Andhra Pradesh               </label><br>
+                        <input type="checkbox" id="3"  name="states" value="Arunachal Pradesh" required>            <label for="3">  Arunachal Pradesh            </label><br>
+                        <input type="checkbox" id="4"  name="states" value="Assam" required>                        <label for="4">  Assam                        </label><br>
+                        <input type="checkbox" id="5"  name="states" value="Bihar" required>                        <label for="5">  Bihar                        </label><br>
+                        <input type="checkbox" id="6"  name="states" value="Chandigarh" required>                   <label for="6">  Chandigarh                   </label><br>
+                        <input type="checkbox" id="7"  name="states" value="Chattisgarh" required>                  <label for="7">  Chattisgarh                  </label><br>
+                        <input type="checkbox" id="8"  name="states" value="Dadra & Nagar Haveli" required>         <label for="8">  Dadra & Nagar Haveli         </label><br>
+                        <input type="checkbox" id="9"  name="states" value="Daman & Diu" required>                  <label for="9">  Daman & Diu                  </label><br>
+                        <input type="checkbox" id="10" name="states" value="Delhi" required>                        <label for="10"> Delhi                        </label><br>
+                        <input type="checkbox" id="11" name="states" value="Goa" required>                          <label for="11"> Goa                          </label><br>
+                        <input type="checkbox" id="12" name="states" value="Gujrat" required>                       <label for="12"> Gujrat                       </label><br>
+                        <input type="checkbox" id="13" name="states" value="Haryana" required>                      <label for="13"> Haryana                      </label><br>
+                        <input type="checkbox" id="14" name="states" value="Himachal Pradesh" required>             <label for="14"> Himachal Pradesh             </label><br>
+                        <input type="checkbox" id="15" name="states" value="Jammu & Kashmir" required>              <label for="15"> Jammu & Kashmir              </label><br>
+                        <input type="checkbox" id="16" name="states" value="Jharkhand" required>                    <label for="16"> Jharkhand                    </label><br>
+                        <input type="checkbox" id="17" name="states" value="Karnataka" required>                    <label for="17"> Karnataka                    </label><br>
+                        <input type="checkbox" id="18" name="states" value="Kerala" required>                       <label for="18"> Kerala                       </label><br>
+                        <input type="checkbox" id="19" name="states" value="Ladakh" required>                       <label for="19"> Ladakh                       </label><br>
+                        <input type="checkbox" id="20" name="states" value="Lakshadweep" required>                  <label for="20"> Lakshadweep                  </label><br>
+                        <input type="checkbox" id="21" name="states" value="Madhya Pradesh" required>               <label for="21"> Madhya Pradesh               </label><br>
+                        <input type="checkbox" id="22" name="states" value="Maharashtra" required>                  <label for="22"> Maharashtra                  </label><br>
+                        <input type="checkbox" id="23" name="states" value="Manipur" required>                      <label for="23"> Manipur                      </label><br>
+                        <input type="checkbox" id="24" name="states" value="Meghalaya" required>                    <label for="24"> Meghalaya                    </label><br>
+                        <input type="checkbox" id="25" name="states" value="Mizoram" required>                      <label for="25"> Mizoram                      </label><br>
+                        <input type="checkbox" id="26" name="states" value="Nagaland" required>                     <label for="26"> Nagaland                     </label><br>
+                        <input type="checkbox" id="27" name="states" value="Odhisa" required>                       <label for="27"> Odhisa                       </label><br>
+                        <input type="checkbox" id="28" name="states" value="Puducherry" required>                   <label for="28"> Puducherry                   </label><br>
+                        <input type="checkbox" id="29" name="states" value="Punjab" required>                       <label for="29"> Punjab                       </label><br>
+                        <input type="checkbox" id="30" name="states" value="Rajasthan" required>                    <label for="30"> Rajasthan                    </label><br>
+                        <input type="checkbox" id="31" name="states" value="Sikkim" required>                       <label for="31"> Sikkim                       </label><br>
+                        <input type="checkbox" id="32" name="states" value="Tamil Nadu" required>                   <label for="32"> Tamil Nadu                   </label><br>
+                        <input type="checkbox" id="33" name="states" value="Telangana" required>                    <label for="33"> Telangana                    </label><br>
+                        <input type="checkbox" id="34" name="states" value="Tripura" required>                      <label for="34"> Tripura                      </label><br>
+                        <input type="checkbox" id="35" name="states" value="Uttar Pradesh" required>                <label for="35"> Uttar Pradesh                </label><br>
+                        <input type="checkbox" id="36" name="states" value="Uttarakhand" required>                  <label for="36"> Uttarakhand                  </label><br>
+                        <input type="checkbox" id="37" name="states" value="West Bengal" required>                  <label for="37"> West Bengal                  </label><br>
+                    </p>
+                    <hr>
+                    <div style="width: 100%; text-align: right;margin-bottom: 20px;padding-right: 20%;">
+                        <input type="button" value="Submit" class="green">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
 
 
 
@@ -33,5 +91,14 @@
             </dl>
         </div>
        
+
+        <script>
+            $('#emailinfo').on("click", function(){
+                $('#info').slideDown("slow");
+                setTimeout(function(){
+                    $('#info').slideUp("slow");
+                }, 7000);
+            });
+        </script>
     </body>
 </html>
