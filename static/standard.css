@@ -138,7 +138,7 @@ textarea:focus{
     border: 2px solid firebrick;
 }
 
-input[type=submit]{              /* Class for submit buttons*/
+input[type=submit], input[type=button]{              /* Class for other form buttons buttons*/
     padding: 15px 25px;
     font-size: 24px;
     text-align: center;
@@ -150,10 +150,10 @@ input[type=submit]{              /* Class for submit buttons*/
     border-radius: 15px;
     box-shadow: 0 9px rgb(13, 92, 6);
 }
-input[type=submit]:hover{
+input[type=submit]:hover, input[type=button]:hover{
     background-color: #3e8e41
 }
-input[type=submit]:active{
+input[type=submit]:active, input[type=button]:active{
     background-color: #3e8e41;
     box-shadow: 0 5px rgb(0, 68, 15);
     transform: translateY(4px);

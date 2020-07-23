@@ -1,4 +1,4 @@
-var states = ["Punjab", "Himachal Pradesh", "Haryana", "Uttarakhand", "Rajasthan", "Gujrat", "Uttar Pradesh", "Bihar", "Madhya Pradesh", "Jharkhand", "Chattisgarh", "West Bengal", "Odhisa", "Telangana", "Andhra Pradesh", "Maharashtra", "Goa", "Karnataka", "Kerala", "Tamil Nadu", "Assam", "Sikkim", "Arunachal Pradesh", "Meghalaya", "Mizoram", "Manipur", "Nagaland", "Tripura", "Jammu & Kashmir", "Ladakh", "Chandigarh", "Delhi", "Daman & Diu", "Puducherry", "Andaman & Nicobar islands", "Dadra & Nagar Haveli", "Lakshadweep"];
+var states = ["Punjab", "Himachal Pradesh", "Haryana", "Uttarakhand", "Rajasthan", "Gujrat", "Uttar Pradesh", "Bihar", "Madhya Pradesh", "Jharkhand", "Chattisgarh", "West Bengal", "Odisha", "Telangana", "Andhra Pradesh", "Maharashtra", "Goa", "Karnataka", "Kerala", "Tamil Nadu", "Assam", "Sikkim", "Arunachal Pradesh", "Meghalaya", "Mizoram", "Manipur", "Nagaland", "Tripura", "Jammu & Kashmir", "Ladakh", "Chandigarh", "Delhi", "Daman & Diu", "Puducherry", "Andaman & Nicobar islands", "Dadra & Nagar Haveli", "Lakshadweep"];
 
 function autocomplete(inp, arr) {
     var currentFocus;
