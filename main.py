@@ -59,7 +59,7 @@ def donateprocessor():
         print(phone)
         address = request.form['address']
         print(address)
-        city = request.form['city']
+        city = request.form['state']
         print(city)
         food = request.form['food']
         print(food)
