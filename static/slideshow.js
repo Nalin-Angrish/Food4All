@@ -6,11 +6,7 @@ function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
+// Function to show slide from it's index (Here index is 1,2,3 and not 0,1,2)
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");

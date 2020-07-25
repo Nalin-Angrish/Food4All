@@ -10,14 +10,18 @@ button.blue{              /* Class for blue coloured buttons*/
     border-radius: 15px;
     box-shadow: 0 9px rgb(14, 0, 139);
 }
+
 button.blue:hover{
     background-color: #2300bd
 }
+
 button.blue:active{
     background-color: #2300bd;
     box-shadow: 0 5px rgb(5, 0, 68);
     transform: translateY(4px);
 }
+
+
 
 button.red{              /* Class for red coloured buttons*/
     padding: 15px 25px;
@@ -31,9 +35,11 @@ button.red{              /* Class for red coloured buttons*/
     border-radius: 15px;
     box-shadow: 0 9px rgb(139, 0, 0);
 }
+
 button.red:hover{
     background-color: #bd0000
 }
+
 button.red:active{
     background-color: #bd0000;
     box-shadow: 0 5px rgb(68, 0, 0);
@@ -41,7 +47,8 @@ button.red:active{
 }
 
 
-.header{
+
+.header{            /* Standard configuration for all headers in the website*/
     font-family: 'Trebuchet MS';
     color: #fff;
     text-align: center;
@@ -51,15 +58,20 @@ button.red:active{
     top: 0;
     background-image: linear-gradient(to right, white, #209CEE, white);
 }
-.intro{
+
+.intro{             /* Standard configuration for intro(s)*/
     text-align: justify;
 }
-p.fg{
+
+p.fg{               /* basic requirement for foreground paragraphs */
     width: 100%;
     position: absolute;
     z-index: 1;
 }
 
+a{                          /* -- link style -- */
+    color: mediumturquoise;
+}
 
 
 
@@ -70,6 +82,7 @@ p.fg{
     bottom: 0;
     right: 0;
 }
+
 .lb-content{                                /* Left-Bottom */
     padding-left: 25px;
     text-align: left;
@@ -77,6 +90,7 @@ p.fg{
     bottom: 0;
     left: 0;
 }
+
 .rt-content{                                /* Right-Top */
     padding-right: 25px;
     text-align: right;
@@ -84,6 +98,7 @@ p.fg{
     top: 0;
     right: 0;
 }
+
 .lt-content{                                /* Left-Top */
     padding-left: 25px;
     text-align: left;
@@ -93,12 +108,8 @@ p.fg{
 }
 
 
-                    /* -- link style -- */
-a{
-    color: mediumturquoise;
-}
 
-input[type=text]{                           /* Classes for textboxes */
+input[type=text]{                           /* Classes for textboxes Begin */
     width: 100%;
     border-radius: 15px;
     border: 2px solid red;
@@ -114,6 +125,16 @@ input[type=email]{
     border: 2px solid red;
 }
 input[type=email]:focus{
+    border-radius: 5px;
+    border: 2px solid firebrick;
+}
+
+input[type=number]{
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid red;
+}
+input[type=number]:focus{
     border-radius: 5px;
     border: 2px solid firebrick;
 }
@@ -136,9 +157,10 @@ textarea{
 textarea:focus{
     border-radius: 5px;
     border: 2px solid firebrick;
-}
+}                                           /* Classes for textboxes End */
 
-input[type=submit], input[type=button]{              /* Class for other form buttons buttons*/
+
+input[type=submit], input[type=button]{              /* Class for other form buttons*/
     padding: 15px 25px;
     text-align: center;
     cursor: pointer;
@@ -149,9 +171,11 @@ input[type=submit], input[type=button]{              /* Class for other form but
     border-radius: 15px;
     box-shadow: 0 9px rgb(13, 92, 6);
 }
+
 input[type=submit]:hover, input[type=button]:hover{
     background-color: #3e8e41
 }
+
 input[type=submit]:active, input[type=button]:active{
     background-color: #3e8e41;
     box-shadow: 0 5px rgb(0, 68, 15);
@@ -159,7 +183,7 @@ input[type=submit]:active, input[type=button]:active{
 }  
 
 
-
+                                                /*Classes related to the autocomplete suggestions*/
 .autocomplete-items {
     position: absolute;
     border: 1px solid #d4d4d4;
@@ -170,12 +194,14 @@ input[type=submit]:active, input[type=button]:active{
     left: 0;
     right: 0;
 }
+
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
 }
+
 .autocomplete-active {
     background-color: DodgerBlue !important;
     color: #ffffff;

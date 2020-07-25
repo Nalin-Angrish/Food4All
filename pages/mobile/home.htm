@@ -7,7 +7,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'mobile.css')}}">       <!-- To import mobile specific stylesheets -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets -->
-        <script src="{{url_for('static', filename='mobanimate.js')}}"></script>
+        <script src="{{url_for('static', filename='mobanimate.js')}}"></script>             <!-- For mobile animations-->
         <script>
             function donate(){
                 window.location.href = "/donate"
@@ -22,21 +22,21 @@
             Food 4 All
         </div>
             
-        <div id="1" style="display: none;position: relative;">
+        <div id="1" style="display: none;position: relative;">                      <!--First Slide-->
             <p class="fg rb-content" style="color: white;">
                  If you are <br> here to help them...
             </p>
             <img src="{{url_for('static', filename='mobile/1.png')}}" class="bg">
         </div>
 
-        <div id="2" style="display: none;position: relative;">
+        <div id="2" style="display: none;position: relative;">                      <!-- Second Slide-->
             <p class="fg lb-content" style="color: white;">
                  We are here to help you...
             </p>
             <img src="{{url_for('static', filename='mobile/2.png')}}" class="bg">
         </div>
 
-        <div id="3" style="display: none;position: relative;">
+        <div id="3" style="display: none;position: relative;">                      <!-- Third Slide-->
             <p class="fg rb-content extrapadding" style="color: white;">
                  Want to Donate? Then go on  
                  <button class="red" onclick="donate()" style="font-size: inherit;"> Donate </button>
@@ -44,7 +44,7 @@
             <img src="{{url_for('static', filename='mobile/3.png')}}" class="bg">
         </div>
 
-        <div id="4" style="display: none;position: relative;">
+        <div id="4" style="display: none;position: relative;">                      <!--Fourth Slide-->
             <p class="fg rt-content" style="color: white;">
                 Are you an NGO or any non-profit organisation?
             </p>
@@ -56,7 +56,7 @@
             <img src="{{url_for('static', filename='mobile/4.png')}}" class="bg">
         </div>
 
-        <div id="5" style="display: none;position: relative;min-height: fit-content;">
+        <div id="5" style="display: none;position: relative;min-height: fit-content;">      <!--Fifth Slide-->
             <p style="text-align: center;"><b><u>About Us</u></b></p>
             <p class="fg" style="text-align: justify;padding-left: 10px;padding-right: 10px;">
                 We are a team which wants to ensure food security for those who are in the need. 
@@ -68,7 +68,7 @@
             <img class="bg" style="height: 550px;border-width: 4px;border-color: green;">
         </div>
 
-        <div id="6" style="display: none;position: relative;background-color: black;color: white;">
+        <div id="6" style="display: none;position: relative;background-color: black;color: white;">     <!--Sixth slide (standard footer)-->
             <img src="{{url_for('static', filename='favicon.ico')}}" style="height: 90%;position: absolute;top: 5%;right: 10%;">
             <dl style="font-size: 50%;">
                 <dt>Contact Details:</dt>

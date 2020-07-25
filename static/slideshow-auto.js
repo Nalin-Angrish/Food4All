@@ -1,9 +1,9 @@
 var slideIndex = 0;
-setInterval(showSlides, 7000);
+setInterval(nextSlide, 7000);         // Automatically switch slide after 7 seconds
 
 
-function showSlides() {
-  console.log('changing...')
+//This function switches to the next slide
+function nextSlide() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   for (i = 0; i < slides.length; i++) {

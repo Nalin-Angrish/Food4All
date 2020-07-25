@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title> Food 4 All | Donate </title>
+        <title> Food 4 All | Donate</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'mobile.css')}}">       <!-- To import mobile specific stylesheets -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets -->
-        <script src="{{url_for('static', filename = 'state-autocomplete.js')}}"></script>
+        <script src="{{url_for('static', filename = 'state-autocomplete.js')}}"></script>   <!-- Suggestions for state autocomplete -->
     </head>
     <body>
         <div class="header" id="header">
@@ -16,31 +16,37 @@
             <form action="/donate/process" method="POST" autocomplete="off" id="donateform">
                 <div style="border: 3px solid green; width: 95%; margin-left: auto;margin-right: auto; background-color: white;">
                     <br>
-                    <input style="width: 80%; padding-left: 25px;" type="text"       name="name"    placeholder="Enter your full name" required><br><br>
-                    <input style="width: 80%; padding-left: 25px;" type="tel"        name="number"  placeholder="Enter your phone number" required><br><br>
-                    <input style="width: 80%; padding-left: 25px;" type="text"       name="address" placeholder="Enter your full Address" required><br><br>
+                    <input style="width: 80%; padding-left: 25px;" type="text"       name="name"    placeholder="Enter your full name" required><br><br>        <!--Name-->
+                    <input style="width: 80%; padding-left: 25px;" type="tel"        name="number"  placeholder="Enter your phone number" required><br><br>     <!--Phone Number-->
+                    <input style="width: 80%; padding-left: 25px;" type="text"       name="address" placeholder="Enter your full Address" required><br><br>     <!--Address-->
+                    
                     <div style="position: relative;display: inline-block;width: 100%;">
-                        <input style="width: 80%; padding-left: 25px;" type="text"   name="state"   placeholder="Enter your State/UT." id="state-box" required><br><br> 
+                        <input style="width: 80%; padding-left: 25px;" type="text"   name="state"   placeholder="Enter your State/UT." id="state-box" required><br><br>     <!--State/UT-->
                     </div>
-                    <textarea style="width: 80%; height: 500px; padding-left: 25px;" name="food"    placeholder="Enter the food which you want to donate. (include quantity)" form="donateform" required></textarea>
+                    
+                    <textarea style="width: 80%; height: 500px; padding-left: 25px;" name="food"    placeholder="Enter the food which you want to donate. (include quantity)" form="donateform" required></textarea>        <!--Food and quantity-->
                     <hr>
+                    
                     <p style="width: 80%;margin-left: auto;margin-right: auto;text-align: left;">
-                        Type of food: <br>
+                        Type of food: <br>                                                                                  <!-- Type of food-->
                         <input type="radio" name="type" id="cooked" value="cooked" required> <label for="cooked">cooked</label><br>
                         <input type="radio" name="type" id="semi" value="semi-cooked" required>     <label for="semi">semi-cooked</label><br>
                         <input type="radio" name="type" id="raw" value="raw" required>       <label for="raw">raw</label>
                     </p>
                     <hr>
-                    <p style="width: 80%;margin-right: auto;margin-left: auto;text-align: left;">
+                    
+                    <p style="width: 80%;margin-right: auto;margin-left: auto;text-align: left;">                           <!-- Transportation assistance-->
                         Would you arrange transport yourself and deliver to the NGO's office or do you want transportation from the NGOs?<br>
                         <input type="radio" id="self" name="trans" value="self" required>   <label for="self">Arrange transport myself</label><br>
                         <input type="radio" id="ngo" name="trans" value="ngo"   required>   <label for="ngo">Need help from NGOs</label>
                     </p>
                     <hr>
+                    
                     <div style="width: 90%; text-align: right;margin-bottom: 20px;padding-right: 20%;">
-                        <input type="submit" style="font-size: inherit;">
+                        <input type="submit" style="font-size: inherit;">                                               <!--Submit-->
                     </div>
                 </div>
+                <input type="text" id="loc" name="loc" style="display: none;">             <!--To submit location-->
             </form>
         </div>
 
@@ -63,6 +69,24 @@
 
 
         <script>autocomplete(document.getElementById("state-box"), states)</script>
+        
+        <script>        //Script to save location
+            var x = document.getElementById("loc");
+            
+            function getLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+              }
+            }
+            
+            function showPosition(position) {
+              x.innerHTML = "Latitude: " + position.coords.latitude +
+              "Longitude: " + position.coords.longitude;
+            }
 
+            getLocation()
+        </script>
     </body>
 </html>

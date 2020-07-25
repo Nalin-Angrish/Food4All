@@ -1,6 +1,6 @@
-var interval2, interval3, interval4, interval5, interval6;
+var interval2, interval3, interval4, interval5, interval6;      // Initialize some variables (These will be used to differentiate animation of different slides)
 
-function isInViewport(elm) {
+function isInViewport(elm) {                    //Function to check whether an element is visible or not
     var element = document.getElementById(elm);
     const rect = element.getBoundingClientRect();
     return (
@@ -12,63 +12,63 @@ function isInViewport(elm) {
 }
 
 
-function do2(){
+function do2(){                 // Animate 2nd Slide
     $('div#2').slideDown("slow", "linear");
-    interval3 = setInterval(function(){check3()}, 2000);
+    interval3 = setInterval(function(){check3()}, 2000);    //Start next animation
 
 }
-function do3(){
+function do3(){                 // Animate 33d Slide
     $('div#3').slideDown("slow", "linear");
-    interval4 = setInterval(function(){check4()}, 2000);
+    interval4 = setInterval(function(){check4()}, 2000);    //Start next animation
 }
-function do4(){
+function do4(){                 // Animate 4th Slide
     $('div#4').slideDown("slow", "linear");
-    interval5 = setInterval(function(){check5()}, 2000);
+    interval5 = setInterval(function(){check5()}, 2000);    //Start next animation
 }
-function do5(){
+function do5(){                 // Animate 5th Slide
     $('div#5').slideDown("slow", "linear");
-    interval6 = setInterval(function(){check6()}, 2000);
+    interval6 = setInterval(function(){check6()}, 2000);    //Start next animation
 }
-function do6(){
+function do6(){                 // Animate 6th Slide
     $('div#6').slideDown("slow", "linear");
 }
 
 
 
-function check2(){
+function check2(){              // Constantly check whether or not to animate 2nd Slide
     if (isInViewport('end')){
-        clearInterval(interval2);
+        clearInterval(interval2);       //Stop checking for this slide
         do2();
     }
 }
-function check3(){
+function check3(){              // Constantly check whether or not to animate 3rd Slide
     if (isInViewport('end')){
-        clearInterval(interval3);
+        clearInterval(interval3);       //Stop checking for this slide
         do3();
     }
 }
-function check4(){
+function check4(){              // Constantly check whether or not to animate 4th Slide
     if (isInViewport('end')){
-        clearInterval(interval4);
+        clearInterval(interval4);       //Stop checking for this slide
         do4();
     }
 }
-function check5(){
+function check5(){              // Constantly check whether or not to animate 5th Slide
     if (isInViewport('end')){
-        clearInterval(interval5);
+        clearInterval(interval5);       //Stop checking for this slide
         do5();
     }
 }
-function check6(){
+function check6(){              // Constantly check whether or not to animate 6th Slide
     if (isInViewport('end')){
-        clearInterval(interval6);
+        clearInterval(interval6);       //Stop checking for this slide
         do6();
     }
 }
 
 
 
-$(document).ready(function(){
+$(document).ready(function(){           // Initiate the animations
     $('div#1').slideDown("slow", "linear");
     interval2 = setInterval(function(){check2()}, 2000);
 })

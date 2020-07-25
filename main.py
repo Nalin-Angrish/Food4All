@@ -1,14 +1,22 @@
 """
 Main python file for Food4All Website.
+This File should be run as it is the main server.
+Running any file other than this will lead to not running the server.
+
 Author:- Nalin Angrish
+Jai Shri Ram!
 """
 
 
-from flask import Flask, render_template, request, url_for, redirect, jsonify        # Importing all flask dependencies
+from flask import Flask, render_template, request, url_for, redirect        # Importing all flask dependencies
+
+import myEmail, dbmanager                                                   # Import custom tools
+
+import random                                                               # Import other library (ies)
+
+
 
 app = Flask(__name__, static_folder="static", template_folder="pages")      # initialized a flask app
-
-
 
 def isMobile(agent):                                                        # Method to check if the user is visiting the website using mobile/Tablet or not
     if("android" in agent.lower()):                 # User agent in Android devices contains 'android'
@@ -26,14 +34,12 @@ def isMobile(agent):                                                        # Me
 def favicon():
     return redirect(url_for('static', filename="favicon.ico"))      # This favicon was generated using the online tool at favicon.io 
 
-
 @app.route("/")                                                             # Home Page...
 def home():
     if(isMobile(request.user_agent.string)):                        # Check if it is mobile user because pages need to be optimized for mobiles
         return render_template("mobile/home.htm")
     else:                                                           # If it is ot mobile user, then return desktop viewr
         return render_template("desktop/home.htm")
-
 
 @app.route("/donate")                                                       # Donate Food
 def donate():
@@ -42,7 +48,6 @@ def donate():
     else:
         return render_template("desktop/donate.htm")
 
-
 @app.route("/signup")                                                       # Sign up as an NGO
 def signUp():
     if(isMobile(request.user_agent.string)):
@@ -50,28 +55,70 @@ def signUp():
     else:
         return render_template("desktop/signup.htm")
 
-@app.route("/donate/process", methods=["POST","GET"])
-def donateprocessor():
-    if request.method == "POST":
-        name = request.form['name']
-        print(name)
+
+
+@app.route("/donate/process", methods=["POST", "GET"])                      # Process data submitted through donate form
+def donateprocessor():              
+    if request.method == "POST":            
+        name = request.form['name']                     # Get all data
         phone = request.form['number']
-        print(phone)
         address = request.form['address']
-        print(address)
-        city = request.form['state']
-        print(city)
+        state = request.form['state']
         food = request.form['food']
-        print(food)
         typeOfFood = request.form['type']
-        print(typeOfFood)
         transport = request.form['trans']
-        print(transport)
-
-    response = "name: "+name+"<br>phone: "+phone+"<br>address: "+address+"<br>city: "+city+"<br>food: "+food+"<br>type: "+typeOfFood+"<br>transport: "+transport
-    return response
+        location = request.form['loc']
 
 
+    index = str(dbmanager.addOrder(name, phone, address, food, typeOfFood, transport, location))  # Use dbmanager to add an order and get it's index number for further operations
+    infoUrl = str(request.url_root)[:-1] + url_for('orders', num=index)         # Generate url for information about order (For NGOs)
+    NGOList = dbmanager.getNGOs(state)
+    
+    
+    for NGO in NGOList:                                     # Get list of NGOs and send each one of them an email to notify them about a new donor along with the information link
+        NGOname , NGOemail = tuple(NGO)
+        myEmail.send(NGOemail,
+                subject="Food4All - A new donor {} in your region needs you...".format(name),
+                text="We have recieved an order from {}, in {}. As we knew that your organisation {} operates here, we thought to inform you about it. You can visit the details about this order from {}".format(name, state, NGOname, infoUrl))
+
+    
+    
+    if isMobile(request.user_agent.string):                 # Return user with an information webpage with a link to approve the order
+        return render_template("mobile/donatesuccess.htm", number=index)
+    else:
+        return render_template("desktop/donatesuccess.htm", number=index)
+
+@app.route("/orders/<num>")                                                 # Order Information page
+def orders(num):
+    return "Order number {} (THIS UI WILL BE UPDATED SOON)".format(num)
+
+@app.route("/donate/approve/<number>")                                      # Page after order is approved
+def approveDonation(number):
+    dbmanager.approveOrder(number)
+    return """<h1>Success</h1><a href="/">Go To Home</a><br>THIS UI WILL BE UPDATED SOON"""
+
+@app.route('/signup/process', methods=["POST", "GET"])                      # Process data submitted through sign-up form
+def signupprocessor():
+    if request.method == "POST":                    # Get all the data
+        name = request.form['name']
+        email = request.form['email']
+        states = request.form.getlist('states')
+
+    for state in states:                            # use dbmanager to add an NGO in all of the states
+        dbmanager.addNGO(state, name, email)
+    
+    return """<h1>Success</h1><a href="/">Go To Home</a><br>THIS UI WILL BE UPDATED SOON"""
+
+
+
+
+
+@app.route("/otpgen/<mailaddr>")                                            # Generate otp and send it to <mailaddr>
+def otpgen(mailaddr):
+    otp = random.randint(100000, 999999)        # Generate random number
+    myEmail.send(mailaddr, subject="OTP from Food4All",
+            text="Thank you for registering to Food4All. Use this OTP for completing the registration: "+str(otp))
+    return str(otp)         # return the otp(as an ajax response) & Mail the otp to the given address ^^
 
 
 
@@ -79,4 +126,4 @@ def donateprocessor():
 
 if __name__ == "__main__":                                                  # Start the web server...
     app.run(debug = True, port = 5000)                  # Flask only supports 1 request at a time but this can be increased 
-                                                        # by interfacing it with a production web server like apache or nginx
+                                                        # by integrating it with a production deployment web server like apache or nginx

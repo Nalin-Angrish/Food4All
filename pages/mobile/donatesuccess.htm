@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Food 4 All | Success!</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'mobile.css')}}">       <!-- To import mobile specific stylesheets -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets -->
+    </head>
+    <body>
+        <div class="header" id="header">
+            Food 4 All
+        </div>
+        <div style="text-align: justify;">              <!--Message-->
+            Your Order Has been successfully placed. NGOs have been notified about you and they will try to contact you as soon as possible
+            <br> After you have confirmed that which NGO will be working with you, you can go to this link to change the status of the order to approved.
+            <br><br><a href="/donate/approve/{{number}}">Approve</a><br><br>        <!--Link for approval-->
+        </div>
+
+        <div id="footer" style="position: relative;background-color: black;color: white;">
+            <img src="{{url_for('static', filename='favicon.ico')}}" style="height: 90%;position: absolute;top: 5%;right: 10%;">
+            <dl style="font-size: 50%;">
+                <dt>Contact Details:</dt>
+                <dd>
+                    <dl>
+                        <dt>Email:</dt>
+                        <dd><a href="mailto:eragicatehunger.food4all@gmail.com">eradicatehunger.food4all@gmail.com</a></dd>
+                        <br>
+                        <dt>Contact Number:</dt>
+                        <dd><a href="tel:+919876543210">+91 9876543210</a></dd>             
+                    </dl>
+                </dd>
+                <br>
+            </dl>
+        </div>
+
+    </body>
+</html>

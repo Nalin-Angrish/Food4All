@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Food 4 All | Success!</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'desktop.css')}}">      <!-- To import desktop specific stylesheets -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets --> 
+        <script src="{{url_for('static', filename = 'state-autocomplete.js')}}"></script>
+    </head>
+    <body>
+        <div id="header" style="position: sticky;" class="header">
+            Food 4 All
+        </div>
+
+        <div style="text-align: justify;">          <!--Message-->
+            Your Order Has been successfully placed. NGOs have been notified about you and they will try to contact you as soon as possible
+            <br> After you have confirmed that which NGO will be working with you, you can go to this link to change the status of the order to approved.
+            <br><br><a href="/donate/approve/{{number}}">Approve</a><br><br>        <!--Link for approval-->
+        </div>
+
+
+
+        <div id="footer" style="background-color: black;color: white; position: relative;">
+            <p class="fg rt-content" style="width: fit-content;"><img src="{{url_for('static', filename = 'bigicon.png')}}" style="height: 140px;"></p>
+            <dl>
+                <dt>Contact Details:</dt>
+                <dd>
+                    <dl>
+                        <dt>Email ID:</dt>
+                        <dd>
+                            <a href="mailto:eradicatehunger.food4all@gmail.com" id="emailaddress">eradicatehunger.food4all@gmail.com</a> 
+                            <span id="emailcb" onclick="copyEmail()">
+                                <img src="{{url_for('static', filename = 'desktop/copy.png')}}" height="15px" style="filter:brightness(400%)">
+                                <span id="email" style="display: none;height: 10px;"> Copy </span>
+                            </span>
+                        </dd>
+                        <br>
+                        <dt>Phone Number:</dt>
+                        <dd>
+                            <a href="tel:+919876543210" id="phonenumber">+91 9876543210</a>
+                            <span id="phonecb" onclick="copyPhone()">
+                                <img src="{{url_for('static', filename = 'desktop/copy.png')}}" height="15px" style="filter:brightness(400%)">
+                                <span id="phone" style="display: none;height: 10px;"> Copy </span>
+                            </span>
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+            <br>
+        </div>
+
+
+        <script src="{{url_for('static', filename = 'copymanager.js')}}"></script>      <!-- For animating copy buttons in the footer-->
+    </body>
+</html>

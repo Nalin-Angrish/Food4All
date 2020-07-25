@@ -1,11 +1,10 @@
-.slideshow-container {
+.slideshow-container {      /*Some settings for the slideshow container*/
     max-width: 100%;
     position: relative;
     margin: auto;
 }
   
-  /* Hide the images by default */
-.mySlides {
+.mySlides {                 /* Hide the slides by default */
     display: none;
     background-color: gray;
     width: 100%;
@@ -14,8 +13,7 @@
     text-align: center;
 }
   
-  /* Next & previous buttons */
-.prev, .next {
+.prev, .next {              /* Next & previous buttons */
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -30,18 +28,16 @@
     user-select: none;
 }
   
-  /* Position the "next button" to the right */
-.next {
+.next {                     /* Position the "next button" to the right */
     right: 0;
     border-radius: 3px 0 0 3px;
 }
   
-  /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
+.prev:hover, .next:hover {  /* On hover, add a black background color with a little bit see-through */
+    background-color: rgba(0,0,0,0.8);    
 }
 
-.slideshow-image{
-  filter: brightness(50%);
-  height: 600px;
+.slideshow-image{           /*Dim the slides a bit and standardize it's height*/
+    filter: brightness(50%);
+    height: 600px;
 }

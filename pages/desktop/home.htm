@@ -26,29 +26,33 @@
             Food 4 All
         </div>
 
-        <div id="intro" class="intro slideshow-container" >
-            <div class="mySlides">
+        <div id="intro" class="intro slideshow-container" >     <!-- Container for slideshow-->
+            
+            <div class="mySlides">              <!--First slide-->                  
                 <p class="fg rt-content extrapadding" style="color: white; font-size: xx-large;">If you are here to <br> help them...</p>
                 <p class="fg lb-content extrapadding" style="color: white; font-size: xx-large;">We are here to help you...</p>
                 <img src="{{url_for('static', filename = 'desktop/1.jpg')}}" class="slideshow-image">
             </div>
             
-            <div class="mySlides">
+
+            <div class="mySlides">              <!--Second Slide-->
                 <p class="fg lt-content extrapadding" style="color: white; font-size: xx-large;">You can contribute by donating food if you have surplus <br> to donate or you are willing to donate.</p>
                 <img src="{{url_for('static', filename = 'desktop/2.jpg')}}" class="slideshow-image">
             </div>
             
-            <div class="mySlides">
+
+            <div class="mySlides">              <!--Thisd Slide-->
                 <p class="fg rb-content extrapadding" style="color: white; font-size: xx-large;">You can also register <br> yourself as an NGO if you wish to <br> collect food and distribute it among the needy.</p>
                 <img src="{{url_for('static', filename = 'desktop/3.jpg')}}" class="slideshow-image">
             </div>
 
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>       <!--Control buttons for slideshow-->
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>        <!--Control buttons for slideshow-->
             <br>
         </div>
 
-        <div id="aboutus" style="width: 100%;text-align: center;">
+        <div id="aboutus" style="width: 100%;text-align: center;">      <!--An About us container-->
             <h1><u> About Us </u></h1>
             <p class="bordered" style="width: 60%; margin-left: auto;margin-right: auto;text-align: justify;padding-left: 5%;padding-right: 5%;">
                 <br>
@@ -64,7 +68,7 @@
             </p>
         </div>
         
-        <div id="donate&signup" style="width: 100%;text-align: center;">
+        <div id="donate&signup" style="width: 100%;text-align: center;">    <!--Container for our linking buttons-->
             <h1><u> How can you help? </u></h1>
             <p class="bordered donateandsignup" style="text-align: justify;">
                 <br>
@@ -75,6 +79,7 @@
                 <br>
             </p>
             
+
             <p class="bordered donateandsignup" style="text-align: right;">
                 <br>
                 <big>
@@ -86,7 +91,7 @@
             </p>
         </div>
 
-        <div id="footer" style="background-color: black;color: white; position: relative;">
+        <div id="footer" style="background-color: black;color: white; position: relative;">             <!--Footer-->
             <p class="fg rt-content" style="width: fit-content;"><img src="{{url_for('static', filename = 'bigicon.png')}}" style="height: 140px;"></p>
             <dl>
                 <dt>Contact Details:</dt>
@@ -126,7 +131,7 @@
             var mb = document.getElementById('menubuttons');
             mb.style.marginTop = margin + 'px';
         </script>
-        <script src="{{url_for('static', filename = 'copymanager.js')}}"></script>
+        <script src="{{url_for('static', filename = 'copymanager.js')}}"></script>          <!-- For animating copy buttons in the footer-->
         <script src="{{url_for('static', filename = 'slideshow-auto.js')}}"></script>       <!-- For creating an automatic slideshow -->
         <script src="{{url_for('static', filename = 'slideshow.js')}}"></script>            <!-- To import script for manual control over slideshow -->
     </body>

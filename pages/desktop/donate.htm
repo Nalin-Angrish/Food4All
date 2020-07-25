@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-    <!--    Desktop - home webpage for Food4All Website
-    Author:- Nalin Angrish  -->
     <head>
-        <title>Food 4 All</title>
+        <title>Food 4 All | Donate</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'desktop.css')}}">      <!-- To import desktop specific stylesheets -->
         <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets --> 
-        <script src="{{url_for('static', filename = 'state-autocomplete.js')}}"></script>
+        <script src="{{url_for('static', filename = 'state-autocomplete.js')}}"></script>   <!-- Suggestions for state autocomplete -->
     </head>
     <body>
         <div id="header" style="position: sticky;" class="header">
@@ -18,31 +16,36 @@
             <form action="/donate/process" method="POST" id="donateform">
                 <div style="border: 3px solid green; width: 50%; margin-left: auto;margin-right: auto; background-color: white;">
                     <br>
-                    <input style="height: 25px; width: 80%; padding-left: 25px;" type="text" name="name"    placeholder="Enter your full name" required><br><br>
-                    <input style="height: 25px; width: 80%; padding-left: 25px;" type="tel"  name="number"  placeholder="Enter your phone number" required><br><br>
-                    <input style="height: 25px; width: 80%; padding-left: 25px;" type="text" name="address" placeholder="Enter your full Address" required><br><br>
+                    <input style="height: 25px;width: 80%; padding-left: 25px;" type="text"       name="name"    placeholder="Enter your full name" required><br><br>        <!--Name-->
+                    <input style="height: 25px;width: 80%; padding-left: 25px;" type="tel"        name="number"  placeholder="Enter your phone number" required><br><br>     <!--Phone Number-->
+                    <input style="height: 25px;width: 80%; padding-left: 25px;" type="text"       name="address" placeholder="Enter your full Address" required><br><br>     <!--Address-->                    
                     <div style="position: relative;display: inline-block;width: 100%;">
-                        <input style="height: 25px; width: 80%; padding-left: 25px;" type="text" name="state"    placeholder="Enter your State/UT." id="state-box" required><br><br> 
+                        <input style="height: 25px; width: 80%; padding-left: 25px;" type="text" name="state"    placeholder="Enter your State/UT." id="state-box" required><br><br>    <!--State/UT-->
                     </div>
-                    <textarea style="width: 80%; height: 200px; padding-left: 25px;" name="food" placeholder="Enter the food which you want to donate. (include quantity)" form="donateform" required></textarea><br>
+                    
+                    <textarea style="width: 80%; height: 200px; padding-left: 25px;" name="food" placeholder="Enter the food which you want to donate. (include quantity)" form="donateform" required></textarea><br>   <!--Food and quantity-->
                     <hr>
+                    
                     <p style="width: 80%;margin-left: auto;margin-right: auto;">
                         Type of food: 
-                        <input type="radio" name="type" id="cooked" value="cooked" required> <label for="cooked">cooked</label>
+                        <input type="radio" name="type" id="cooked" value="cooked" required> <label for="cooked">cooked</label>     <!-- Type of food-->
                         <input type="radio" name="type" id="semi" value="semi" required>     <label for="semi">semi-cooked</label>
                         <input type="radio" name="type" id="raw" value="raw" required>       <label for="raw">raw</label>
                     </p>
                     <hr>
+                    
                     <p style="width: 80%;margin-right: auto;margin-left: auto;">
-                        Would you arrange transport yourself and deliver to the NGO's office or do you want transportation from the NGOs?<br>
+                        Would you arrange transport yourself and deliver to the NGO's office or do you want transportation from the NGOs?<br>   <!-- Transportation assistance-->
                         <input type="radio" id="self" name="trans" value="self" required><label for="self">Arrange transport myself</label>
                         <input type="radio" id="ngo" name="trans" value="ngo"   required><label for="ngo">Need help from NGOs</label>
                     </p>
                     <hr>
+                    
                     <div style="width: 100%; text-align: right;margin-bottom: 20px;padding-right: 20%;">
-                        <input type="submit">
+                        <input type="submit">                                   <!--Submit-->
                     </div>
                 </div>
+                <input type="text" id="loc" name="loc" style="display: none;"> <!--To submit location-->
             </form>
         </div>
 
@@ -76,8 +79,28 @@
         </div>
 
 
-        <script src="{{url_for('static', filename = 'copymanager.js')}}"></script>
+        <script src="{{url_for('static', filename = 'copymanager.js')}}"></script>      <!-- For animating copy buttons in the footer-->
+        
         <script>autocomplete(document.getElementById("state-box"), states)</script>
+        
+        <script>        //Script to save location
+            var x = document.getElementById("loc");
+            
+            function getLocation() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+              }
+            }
+            
+            function showPosition(position) {
+              x.innerHTML = "Latitude: " + position.coords.latitude +
+              "<br>Longitude: " + position.coords.longitude;
+            }
+
+            getLocation()
+        </script>
     </body>
 </html>
 

@@ -1,18 +1,18 @@
-$('#emailcb').hover(function () {
+$('#emailcb').hover(function () {       /* To animate the Description of the copy button (EMAIL)  */
         $('#email').slideDown("slow");
     }, function () {
         $('#email').slideUp("slow");
     }
-);
+);  
 
-$('#phonecb').hover(function(){
+$('#phonecb').hover(function(){         /* To animate the Description of the copy button (PHONE)  */
         $('#phone').slideDown("slow");
     }, function(){
         $('#phone').slideUp("slow")
     }
 );
 
-function copyEmail(){
+function copyEmail(){                   /* Function to copy Email Address */
     node = document.getElementById("emailaddress");
 
     if (document.body.createTextRange) {
@@ -33,7 +33,7 @@ function copyEmail(){
     alert("Copied the email address");
 }
 
-function copyPhone(){
+function copyPhone(){                   /* Function to copy Phone NUmber */
     node = document.getElementById("phonenumber");
 
     if (document.body.createTextRange) {
