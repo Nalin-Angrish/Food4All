@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Food 4 All | Order Details</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    <!-- JQuery -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'desktop.css')}}">      <!-- To import desktop specific stylesheets -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'standard.css')}}">     <!-- To import standard stylesheets -->
+    </head>
+    <body>
+        <div id="header" style="position: sticky;" class="header">
+            Food 4 All
+        </div>
+
+        <div id="content">
+            Displaying details of order number {{num}} by {{name}}:
+            <ul>
+                <li>Name: <b>{{name}}</b></li>
+                <li>Phone number: <b><a href="tel:{{phone}}">{{phone}}</a></b></li>
+                <li>Address: <b>{{address}}</b></li>
+                <li>Food: <b>{{food}}</b></li>
+                <li>Type of food: <b>{{tof}}</b></li>
+                <li>Transportation: <b>{{trans}}</b></li>
+                <li>Status: <b>{{status}}</b></li>
+            </ul>
+            <br><br>
+        </div>
+
+
+        <div id="footer" style="background-color: black;color: white; position: relative;">
+            <p class="fg rt-content" style="width: fit-content;"><img src="{{url_for('static', filename = 'bigicon.png')}}" style="height: 140px;"></p>
+            <dl>
+                <dt>Contact Details:</dt>
+                <dd>
+                    <dl>
+                        <dt>Email ID:</dt>
+                        <dd>
+                            <a href="mailto:eradicatehunger.food4all@gmail.com" id="emailaddress">eradicatehunger.food4all@gmail.com</a> 
+                            <span id="emailcb" onclick="copyEmail()">
+                                <img src="{{url_for('static', filename = 'desktop/copy.png')}}" height="15px" style="filter:brightness(400%)">
+                                <span id="email" style="display: none;height: 10px;"> Copy </span>
+                            </span>
+                        </dd>
+                        <br>
+                        <dt>Phone Number:</dt>
+                        <dd>
+                            <a href="tel:+919876543210" id="phonenumber">+91 9876543210</a>
+                            <span id="phonecb" onclick="copyPhone()">
+                                <img src="{{url_for('static', filename = 'desktop/copy.png')}}" height="15px" style="filter:brightness(400%)">
+                                <span id="phone" style="display: none;height: 10px;"> Copy </span>
+                            </span>
+                        </dd>
+                    </dl>
+                </dd>
+            </dl>
+            <br>
+        </div>
+
+
+        <script src="{{url_for('static', filename = 'copymanager.js')}}"></script>      <!-- For animating copy buttons in the footer-->
+        <script>
+            if("{{status}}" == "Approved"){                 // Get status value and set background colour of info page green
+                document.getElementById('content').style.backgroundColor = "#d3ffd3"
+            }else{                                          // If the order is not approved, set background colour to red
+                document.getElementById('content').style.backgroundColor = "#ffc2c2"
+            }
+        </script>
+    </body>
+</html>

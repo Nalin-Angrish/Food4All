@@ -7,8 +7,8 @@ from email import encoders
 
 def send(to, subject="Test", text="Testing the mail agent"):
 
-    fromaddr = 'eradicatehunger.food4all@gmail.com'
-    password = 'nalinfoodall2020'                               #This password will be kept public till 30th July, 2020. After that, the password will change and will not be shown publicly in the github repository
+    fromaddr = 'someemail@gmail.com'
+    password = 'password'                               #The Email address are removed from the file and you have to put your own
     try:
         msg = MIMEMultipart()                   #Configure message
         msg['From'] = fromaddr 

@@ -90,12 +90,38 @@ def donateprocessor():
 
 @app.route("/orders/<num>")                                                 # Order Information page
 def orders(num):
-    return "Order number {} (THIS UI WILL BE UPDATED SOON)".format(num)
+    myOrder = dbmanager.getOrder(num)
+
+    name = myOrder.getName()
+    phone = myOrder.getPhone()
+    address = myOrder.getAddress()
+    food = myOrder.getFood()
+    tof = myOrder.getFoodType()
+    trans = myOrder.getTransport()
+    
+
+    status = myOrder.isApproved()
+    if(status == True):                 # Generate a simple string value based on approval
+        status = "Approved"
+    else:
+        status = "Approval Pending"
+
+
+    if("+91" not in phone):             # Rectify a phone number
+        phone = "+91"+phone
+    if (" " in phone):
+        phone = phone.replace(" ", "")
+    
+
+    if isMobile(request.user_agent.string):
+        return render_template('mobile/orders.htm', num=num, name=name, phone=phone, address=address, food=food, tof=tof, trans=trans, status=status)
+    else:
+        return render_template('desktop/orders.htm', num=num, name=name, phone=phone, address=address, food=food, tof=tof, trans=trans, status=status)
 
 @app.route("/donate/approve/<number>")                                      # Page after order is approved
 def approveDonation(number):
     dbmanager.approveOrder(number)
-    return """<h1>Success</h1><a href="/">Go To Home</a><br>THIS UI WILL BE UPDATED SOON"""
+    return redirect(url_for('success'))
 
 @app.route('/signup/process', methods=["POST", "GET"])                      # Process data submitted through sign-up form
 def signupprocessor():
@@ -107,11 +133,15 @@ def signupprocessor():
     for state in states:                            # use dbmanager to add an NGO in all of the states
         dbmanager.addNGO(state, name, email)
     
-    return """<h1>Success</h1><a href="/">Go To Home</a><br>THIS UI WILL BE UPDATED SOON"""
+    return redirect(url_for('success'))
 
 
-
-
+@app.route('/success')                                                      # This will display the success message and redirect to the home page
+def success():
+    if isMobile(request.user_agent.string):
+        return render_template('mobile/success.htm')
+    else:
+        return render_template('desktop/success.htm')
 
 @app.route("/otpgen/<mailaddr>")                                            # Generate otp and send it to <mailaddr>
 def otpgen(mailaddr):
