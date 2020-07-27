@@ -5,7 +5,7 @@ This website is an open source project and is an entry for **[Code Camp](https:/
 You can get information about my team **[here](https://codecamphackathon.netlify.app/TheJuniorDev)**
 
 Note: all passwords in theis project have now been removed and changed. This website is now kept only as a template for others.
-Also, this project has now been hosted at: (link will be given soon)
+Also, this project has now been hosted at: **[food-4-all.herokuapp.com](https://food-4-all.herokuapp.com)**
 
 # About
 
